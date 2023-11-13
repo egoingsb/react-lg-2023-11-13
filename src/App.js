@@ -2,9 +2,7 @@ import "./App.css";
 import { useState } from "react";
 
 function Counter({ title, initValue }) {
-  const countState = useState(initValue);
-  const count = countState[0];
-  const setCount = countState[1];
+  const [count, setCount] = useState(initValue);
   function up() {
     setCount(count + 1);
   }
