@@ -5,13 +5,18 @@ function Counter({ title, initValue }) {
   const countState = useState(initValue);
   const count = countState[0];
   const setCount = countState[1];
-  function clickHandler() {
+  function up() {
     setCount(count + 1);
+  }
+  function down() {
+    setCount(count - 1);
   }
   return (
     <>
       <h1>{title}</h1>
-      <button onClick={clickHandler}>+</button> {count}
+      <button onClick={up}>+</button>
+      <button onClick={down}>-</button>
+      {count}
     </>
   );
 }
