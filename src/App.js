@@ -9,14 +9,18 @@ function Counter({ title, initValue }) {
   const change = (evt) => {
     setStep(Number(evt.target.value));
   };
+  const rootStyle = {
+    backgroundColor: "#eee",
+    padding: 10,
+  };
   return (
-    <>
+    <div style={rootStyle}>
       <h1>{title}</h1>
       <button onClick={up}>+</button>
       <button onClick={down}>-</button>
       <input type="text" value={step} onChange={change}></input>
       {count}
-    </>
+    </div>
   );
 }
 
