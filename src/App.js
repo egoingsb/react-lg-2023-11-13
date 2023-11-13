@@ -18,7 +18,19 @@ function Counter({ title, initValue }) {
         setCount(result.value);
       });
   };
-  const down = () => setCount(count - step);
+  const down = () => {
+    fetch("http://localhost:9999/counter", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ value: count - step }),
+    })
+      .then((response) => response.json())
+      .then((result) => {
+        setCount(result.value);
+      });
+  };
   const change = (evt) => {
     setStep(Number(evt.target.value));
   };
