@@ -3,12 +3,8 @@ import { useState } from "react";
 
 function Counter({ title, initValue }) {
   const [count, setCount] = useState(initValue);
-  function up() {
-    setCount(count + 1);
-  }
-  function down() {
-    setCount(count - 1);
-  }
+  const up = () => setCount(count + 1);
+  const down = () => setCount(count - 1);
   return (
     <>
       <h1>{title}</h1>
