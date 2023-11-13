@@ -1,4 +1,5 @@
-import "./App.css";
+import c from "./App.css";
+import s from "./App.module.css";
 import { useState } from "react";
 
 function Counter({ title, initValue }) {
@@ -16,8 +17,12 @@ function Counter({ title, initValue }) {
   return (
     <div style={rootStyle}>
       <h1>{title}</h1>
-      <button onClick={up}>+</button>
-      <button onClick={down}>-</button>
+      <button className={s.btn + " " + s.border} onClick={up}>
+        +
+      </button>
+      <button className={s.btn} onClick={down}>
+        -
+      </button>
       <input type="text" value={step} onChange={change}></input>
       <span className="output">{count}</span>
     </div>
