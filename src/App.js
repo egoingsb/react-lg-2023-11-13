@@ -19,7 +19,7 @@ function Counter({ title, initValue }) {
       <button onClick={up}>+</button>
       <button onClick={down}>-</button>
       <input type="text" value={step} onChange={change}></input>
-      {count}
+      <span className="output">{count}</span>
     </div>
   );
 }
