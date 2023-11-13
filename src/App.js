@@ -1,11 +1,23 @@
-import c from "./App.css";
+import "./App.css";
 import s from "./App.module.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function Counter({ title, initValue }) {
   const [count, setCount] = useState(initValue);
   const [step, setStep] = useState(1);
-  const up = () => setCount(count + step);
+  const up = () => {
+    fetch("http://localhost:9999/counter", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ value: count + step }),
+    })
+      .then((response) => response.json())
+      .then((result) => {
+        setCount(result.value);
+      });
+  };
   const down = () => setCount(count - step);
   const change = (evt) => {
     setStep(Number(evt.target.value));
@@ -14,6 +26,13 @@ function Counter({ title, initValue }) {
     backgroundColor: "#eee",
     padding: 10,
   };
+  useEffect(() => {
+    fetch("http://localhost:9999/counter")
+      .then((response) => response.json())
+      .then((result) => {
+        setCount(result.value);
+      });
+  }, []);
   return (
     <div style={rootStyle}>
       <h1>{title}</h1>
