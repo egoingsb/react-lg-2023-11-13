@@ -5,6 +5,13 @@ import { useState, useEffect } from "react";
 function Counter({ title, initValue }) {
   const [count, setCount] = useState(initValue);
   const [step, setStep] = useState(1);
+  useEffect(() => {
+    fetch("http://localhost:9999/counter")
+      .then((response) => response.json())
+      .then((result) => {
+        setCount(result.value);
+      });
+  }, []);
   const up = () => {
     fetch("http://localhost:9999/counter", {
       method: "POST",
